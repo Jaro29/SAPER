@@ -8,7 +8,7 @@
 # Saper Web MVP — Progress
 
 ## Stack
-Java 21 + Spring Boot 3.5 + Spring Security + JWT + MySQL 8 + TypeScript + Tailwind CSS
+Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + TypeScript + Tailwind CSS
 
 ## Etapy
 
@@ -16,7 +16,7 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MySQL 8 + TypeScript + Tailw
 - [x] Etap 2a: Encja User.java
 - [x] Etap 2b: Encja Game.java
 - [x] Etap 2c: Encja Score.java
-- [x] Etap 3: Konfiguracja MySQL + migracje (Liquibase)
+- [x] Etap 3: Konfiguracja (MariaDB) + migracje (Liquibase)
 - [ ] Etap 4: Autoryzacja JWT
 - [ ] Etap 5: Logika gry (generowanie planszy, BFS)
 - [ ] Etap 6: Endpointy REST gry
@@ -26,7 +26,7 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MySQL 8 + TypeScript + Tailw
 - [ ] Etap 10: Testy i weryfikacja MVP
 
 ## Ostatni krok
-Ukończono Etap 2 — wszystkie encje (User, Game, Score). Następny: Etap 3 — konfiguracja MySQL + migracje (Liquibase).
+Ukończono Etap 3 — Konfiguracja MariaDB + migracje (Liquibase). Następny: Etap 4 — Autoryzacja JWT
 
 ## Pakiety
 - model, repository, service, controller, dto, security, config
