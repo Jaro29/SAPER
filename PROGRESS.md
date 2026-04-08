@@ -9,7 +9,7 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MySQL 8 + TypeScript + Tailw
 - [x] Etap 2a: Encja User.java
 - [x] Etap 2b: Encja Game.java
 - [x] Etap 2c: Encja Score.java
-- [ ] Etap 3: Konfiguracja MySQL + migracje (Liquibase)
+- [x] Etap 3: Konfiguracja MySQL + migracje (Liquibase)
 - [ ] Etap 4: Autoryzacja JWT
 - [ ] Etap 5: Logika gry (generowanie planszy, BFS)
 - [ ] Etap 6: Endpointy REST gry
