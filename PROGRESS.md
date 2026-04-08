@@ -7,8 +7,8 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MySQL 8 + TypeScript + Tailw
 
 - [x] Etap 1: Inicjalizacja projektu Spring Boot
 - [x] Etap 2a: Encja User.java
-- [ ] Etap 2b: Encja Game.java
-- [ ] Etap 2c: Encja Score.java
+- [x] Etap 2b: Encja Game.java
+- [x] Etap 2c: Encja Score.java
 - [ ] Etap 3: Konfiguracja MySQL + migracje (Liquibase)
 - [ ] Etap 4: Autoryzacja JWT
 - [ ] Etap 5: Logika gry (generowanie planszy, BFS)
@@ -19,7 +19,7 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MySQL 8 + TypeScript + Tailw
 - [ ] Etap 10: Testy i weryfikacja MVP
 
 ## Ostatni krok
-Utworzono User.java. Następny: Game.java.
+Ukończono Etap 2 — wszystkie encje (User, Game, Score). Następny: Etap 3 — konfiguracja MySQL + migracje (Liquibase).
 
 ## Pakiety
 - model, repository, service, controller, dto, security, config
