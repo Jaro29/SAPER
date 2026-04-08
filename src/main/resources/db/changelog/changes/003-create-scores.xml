@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="003" author="jaro">
+        <createTable tableName="scores">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_scores_user"
+                             references="users(id)"/>
+            </column>
+            <column name="game_id" type="BIGINT">
+                <constraints nullable="false" unique="true"
+                             foreignKeyName="fk_scores_game"
+                             references="games(id)"/>
+            </column>
+            <column name="difficulty" type="ENUM('EASY','MEDIUM','HARD')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time_seconds" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="played_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

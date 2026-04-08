@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="002" author="jaro">
+        <createTable tableName="games">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_games_user"
+                             references="users(id)"/>
+            </column>
+            <column name="status" type="ENUM('IN_PROGRESS','WON','LOST','ABANDONED')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="difficulty" type="ENUM('EASY','MEDIUM','HARD')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="board_state" type="JSON"/>
+            <column name="created_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="finished_at" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
