@@ -1,3 +1,10 @@
+## Instrukcja dla AI (początek sesji)
+1. Repozytorium: https://github.com/Jaro29/SAPER.git
+2. Branch strategy: main → develop → feature/etap-XX-nazwa
+3. Po każdym etapie: commit na feature branch → merge do develop → push
+4. Aktualizuj PROGRESS.md po każdym etapie
+5. application.properties NIE jest w repo (dane wrażliwe) — użytkownik konfiguruje lokalnie
+
 # Saper Web MVP — Progress
 
 ## Stack
