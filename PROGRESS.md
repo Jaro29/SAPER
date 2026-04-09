@@ -17,7 +17,7 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + TypeScript + Tailw
 - [x] Etap 2b: Encja Game.java
 - [x] Etap 2c: Encja Score.java
 - [x] Etap 3: Konfiguracja (MariaDB) + migracje (Liquibase)
-- [ ] Etap 4: Autoryzacja JWT
+- [ ] Etap 4: Autoryzacja JWT 
 - [ ] Etap 5: Logika gry (generowanie planszy, BFS)
 - [ ] Etap 6: Endpointy REST gry
 - [ ] Etap 7: Endpointy wyników i rankingu
@@ -26,8 +26,14 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + TypeScript + Tailw
 - [ ] Etap 10: Testy i weryfikacja MVP
 
 ## Ostatni krok
-Ukończono Etap 3 — Konfiguracja MariaDB + migracje (Liquibase). Następny: Etap 4 — Autoryzacja JWT
+Praca nad Etap 4 — Zmieniono układ pakietów (zaktualizowano w AI_CONTEXT.md). Autoryzacja JWT dodano w security: AuthService, w dto: AuthRequest, AuthResponse, w jwt: JwtAuthenticationFilter, JwtUtil, w config: SecurityConfig, w repository: UserRepository
+Dodano odpowiednie zależności do pom.xml.
+do application.properties dodano:
+jwt.secret=########
+jwt.expiration=86400000   # 24 godziny w milisekundach
+Trzeba utworzyć gałąź dla etapu 4 w git, porobić commity i wypchnąć.
+Dalej trzeba dodać UserDetailsService + AuthController aby ukończyć etap 4.
 
 ## Pakiety
-- model, repository, service, controller, dto, security, config
+- model, repository, service, controller, security (dto, jwt, config)
 - Group: com.jaro.saper
