@@ -110,6 +110,17 @@ public class GameService {
         return gameRepository.save(game);
     }
 
+    public Game getGameById(Long gameId, User user) {
+        Game game = gameRepository.findById(gameId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Gra nie istnieje"));
+
+        if (!game.getUser().getId().equals(user.getId())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Brak dostępu do tej gry");
+        }
+
+        return game;
+    }
+
     public Game getGameForUser(Long gameId, User user) {
         Game game = gameRepository.findById(gameId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Gra nie istnieje"));
