@@ -8,7 +8,7 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + TypeScript + Tailw
 - [x] Etap 2: Encje JPA (User, Game, Score)
 - [x] Etap 3: Konfiguracja MariaDB + migracje Liquibase
 - [x] Etap 4: Autoryzacja JWT (rejestracja, logowanie, JWT filter, SecurityConfig)
-- [ ] Etap 5: Logika gry (generowanie planszy, BFS, warunki zakończenia)
+- [x] Etap 5: Logika gry (generowanie planszy, BFS, warunki zakończenia)
 - [ ] Etap 6: Endpointy REST gry (reveal, flag, status)
 - [ ] Etap 7: Endpointy wyników i rankingu
 - [ ] Etap 8: Frontend (TS + Tailwind)
@@ -16,5 +16,5 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + TypeScript + Tailw
 - [ ] Etap 10: Testy i weryfikacja MVP
 
 ## Ostatni krok
-Ukończono Etap 4 — Autoryzacja JWT.
-Następny: Etap 5 — Logika gry (generowanie planszy, BFS, warunki zakończenia).
+Ukończono Etap 5 — Logika gry (BoardService, BoardSerializer, GameService, GameRepository).
+Następny: Etap 6 — Endpointy REST gry (reveal, flag, status).
