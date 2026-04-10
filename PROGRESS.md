@@ -1,7 +1,7 @@
 # Saper Web MVP — Progress
 
 ## Stack
-Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + TypeScript + Tailwind CSS
+Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + Angular 19 + TypeScript + Tailwind CSS 4
 
 ## Etapy
 - [x] Etap 1: Inicjalizacja projektu Spring Boot
@@ -11,10 +11,10 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + TypeScript + Tailw
 - [x] Etap 5: Logika gry (generowanie planszy, BFS, warunki zakończenia)
 - [x] Etap 6: Endpointy REST gry (reveal, flag, status)
 - [x] Etap 7: Endpointy wyników i rankingu
-- [ ] Etap 8: Frontend (TS + Tailwind)
-- [ ] Etap 9: Integracja frontend ↔ backend
+- [x] Etap 8: Inicjalizacja frontendu (Angular 19, Vite, Tailwind CSS 4)
+- [ ] Etap 9: Integracja frontend ↔ backend (logowanie, generowanie planszy)
 - [ ] Etap 10: Testy i weryfikacja MVP
 
 ## Ostatni krok
-Ukończono Etap 7 — Endpointy wyników i rankingu (ScoreService, ScoreController, ScoreRepository).
-Następny: Etap 8 — Frontend (TS + Tailwind).
+Ukończono Etap 8 — Inicjalizacja aplikacji webowej w Angular 19 (zastąpiono czysty TS) z wbudowanym builderem Vite i systemem styli Tailwind CSS 4.
+Następny: Etap 9 — Integracja Angular ↔ Spring Boot (zaczniemy od ekranów autoryzacji i komunikacji z bazą po JWT).
