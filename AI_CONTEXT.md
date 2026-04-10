@@ -19,34 +19,57 @@ main → develop → feature/etap-XX-nazwa
 ## Stack
 - Backend: Java 21 + Spring Boot 3.5.x + Spring Security + JWT + Liquibase
 - Baza: MariaDB (nie MySQL!) — sterownik `mariadb-java-client`
-- Frontend: TypeScript + Tailwind CSS (etap 8+)
+- Frontend: Angular 19 + TypeScript + Tailwind CSS 4 (etap 8+)
 - IDE: IntelliJ IDEA, System: CachyOS Linux
 
 ## Struktura pakietów i encje
-```
+```text
 com.jaro.saper
-├── model
-│   ├── User.java        → id, login, passwordHash, createdAt
-│   ├── Game.java        → id, user, status(enum), difficulty(enum), boardState(JSON), createdAt, finishedAt
-│   │                       Enums zagnieżdżone: Game.GameStatus, Game.Difficulty
-│   ├── Score.java       → id, user, game(UNIQUE), difficulty, timeSeconds, playedAt
-│   └── Cell.java        → value(-1=mina, 0-8), state(enum: HIDDEN/REVEALED/FLAGGED)
-├── repository
-│   ├── UserRepository   → findByLogin, existsByLogin
-│   └── GameRepository   → findByUser
 ├── controller
-│   └── AuthController   → POST /api/auth/register, POST /api/auth/login
+│   ├── AuthController
+│   ├── GameController
+│   └── ScoreController
+├── dto
+│   ├── CellDto
+│   ├── GameMapper
+│   ├── GameRequest
+│   ├── GameResponse
+│   ├── MoveRequest
+│   ├── RankingEntry
+│   ├── ScoreRequest
+│   └── ScoreResponse
+├── model
+│   ├── Cell
+│   ├── Game
+│   ├── Score
+│   └── User
+├── repository
+│   ├── GameRepository
+│   ├── ScoreRepository
+│   └── UserRepository
 ├── security
-│   ├── AuthService      → register (BCrypt), login (AuthenticationManager)
-│   ├── CustomUserDetailsService
-│   ├── config/SecurityConfig    → JWT stateless, BCryptPasswordEncoder
-│   ├── dto/AuthRequest, AuthResponse
-│   └── jwt/JwtUtil, JwtAuthenticationFilter
-└── service
-    ├── BoardService     → generateBoard, reveal (BFS), isWon
-    ├── BoardSerializer  → serialize/deserialize Cell[][] ↔ JSON
-    └── GameService      → createGame, reveal, flag, getGameForUser
+│   ├── config
+│   │   └── SecurityConfig
+│   ├── dto
+│   │   ├── AuthRequest
+│   │   └── AuthResponse
+│   ├── jwt
+│   │   ├── JwtAuthenticationFilter
+│   │   └── JwtUtil
+│   ├── AuthService
+│   └── CustomUserDetailsService
+├── service
+│   ├── BoardSerializer
+│   ├── BoardService
+│   ├── GameService
+│   └── ScoreService
+└── SaperApplication
 ```
+
+**Krok 1:**
+Skopiuj powyższą strukturę i zaktualizuj plik `AI_CONTEXT.md` w swoim IDE.
+
+Daj znać „OK”, gdy to zrobisz, a przejdziemy do inicjalizacji frontendu w Vue/React/czystym TS (zgodnie z instrukcją Vite).
 ## Baza danych
 - Silnik: MariaDB, baza: `saper`, kodowanie: utf8mb4
 - Migracje Liquibase (XML): 001-create-users, 002-create-games, 003-create-scores

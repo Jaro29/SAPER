@@ -12,7 +12,7 @@
 |---|---|
 | Projekt | Saper Web MVP |
 | Repozytorium | [URL] |
-| Stack | Java + Spring Boot / TypeScript + Tailwind / MySQL |
+| Stack | Java + Spring Boot / Angular 19 + Tailwind / MariaDB |
 | Środowisko docelowe | Przeglądarka (desktop-first) |
 
 > **Jak używać tego dokumentu:**
@@ -192,12 +192,12 @@ Docelowy użytkownik to gracz chcący rozegrać klasyczną partię Sapera online
 
 ### 5.2 Stack technologiczny
 
-| Warstwa | Technologia | Uzasadnienie |
-|---|---|---|
-| Backend | Java 21 + Spring Boot 3.x | `[SZABLON]` |
-| Bezpieczeństwo | Spring Security + JWT + BCrypt | `[SZABLON]` |
-| Frontend | TypeScript + HTML + Tailwind CSS | `[SZABLON]` |
-| Baza danych | MySQL 8.x | `[SZABLON]` |
+| Warstwa | Technologia                              | Uzasadnienie |
+|---|------------------------------------------|---|
+| Backend | Java 21 + Spring Boot 3.x                | `[SZABLON]` |
+| Bezpieczeństwo | Spring Security + JWT + BCrypt           | `[SZABLON]` |
+| Frontend | Angular 19 + TypeScript + Tailwind CSS 4 | Kompletny framework z wbudowanym routingiem i klientem HTTP, szybki build (Vite) |
+| Baza danych | MariaDB | `[SZABLON]` |
 | Repozytorium | GitHub | `[SZABLON]` |
 
 ---
