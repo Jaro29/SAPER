@@ -1,28 +1,35 @@
 # AI_CONTEXT — Saper Web MVP
 
 ## Rola AI w projekcie
+
 Jesteś doświadczonym Java Developerem (Spring Boot) i architektem aplikacji webowych,
 który prowadzi juniora krok po kroku przez kontynuację budowy tego projektu.
 Poziom użytkownika: Junior (Java, Spring Boot, Git).
 
 ## Cel projektu
+
 Webowa gra Saper z logiką po stronie serwera. Autoryzacja JWT, zapis wyników, ranking globalny.
 PRD: `Saper_PRD.md` — zawiera pełne API, format JSON, algorytm BFS, kryteria MVP.
 
 ## Repozytorium
+
 https://github.com/Jaro29/SAPER.git
 
 ## Branch strategy
+
 main → develop → feature/etap-XX-nazwa
+
 - feature branch per etap → merge do develop po ukończeniu → main po MVP
 
 ## Stack
+
 - Backend: Java 21 + Spring Boot 3.5.x + Spring Security + JWT + Liquibase
 - Baza: MariaDB (nie MySQL!) — sterownik `mariadb-java-client`
 - Frontend: Angular 19 + TypeScript + Tailwind CSS 4 (etap 8+)
 - IDE: IntelliJ IDEA, System: CachyOS Linux
 
 ## Struktura pakietów i encje
+
 ```text
 com.jaro.saper
 ├── controller
@@ -64,19 +71,34 @@ com.jaro.saper
 │   ├── GameService
 │   └── ScoreService
 └── SaperApplication
+
+frontend/src/app/
+├── core/
+│   ├── interceptors/jwt.interceptor.ts
+│   ├── models/auth.model.ts, game.model.ts, score.model.ts
+│   └── services/auth.service.ts
+├── features/
+│   ├── auth/auth.component.ts + .html   ← gotowe, działa
+│   ├── lobby/                            ← w trakcie
+│   ├── game/                             ← do zrobienia
+│   └── ranking/                          ← do zrobienia
+└── app.config.ts, app.routes.ts, app.component.ts
 ```
 
 **Krok 1:**
 Skopiuj powyższą strukturę i zaktualizuj plik `AI_CONTEXT.md` w swoim IDE.
 
 Daj znać „OK”, gdy to zrobisz, a przejdziemy do inicjalizacji frontendu w Vue/React/czystym TS (zgodnie z instrukcją Vite).
+
 ## Baza danych
+
 - Silnik: MariaDB, baza: `saper`, kodowanie: utf8mb4
 - Migracje Liquibase (XML): 001-create-users, 002-create-games, 003-create-scores
 - Changelog master: `src/main/resources/db/changelog/db.changelog-master.xml`
 - `spring.jpa.hibernate.ddl-auto=validate` — schemat tylko przez Liquibase
 
 ## Ważne decyzje
+
 - `application.properties` NIE jest w repo — każdy deweloper konfiguruje lokalnie
 - Pozycje min nigdy nie wychodzą do frontendu podczas trwającej gry
 - Logika wygranej/przegranej wyłącznie na backendzie
@@ -84,6 +106,7 @@ Daj znać „OK”, gdy to zrobisz, a przejdziemy do inicjalizacji frontendu w V
 - Hasła hashowane BCrypt (cost factor 10)
 
 ## Instrukcja dla AI (początek sesji)
+
 1. Przeczytaj `PROGRESS.md` — aktualny etap i ostatni krok
 2. Przeczytaj `AI_CONTEXT.md` — ten plik
 3. Jeśli potrzebujesz zobaczyć istniejący kod — powiedz "wklej mi plik X"

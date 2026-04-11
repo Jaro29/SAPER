@@ -1,9 +1,11 @@
 # Saper Web MVP — Progress
 
 ## Stack
+
 Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + Angular 19 + TypeScript + Tailwind CSS 4
 
 ## Etapy
+
 - [x] Etap 1: Inicjalizacja projektu Spring Boot
 - [x] Etap 2: Encje JPA (User, Game, Score)
 - [x] Etap 3: Konfiguracja MariaDB + migracje Liquibase
@@ -16,5 +18,6 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + Angular 19 + TypeS
 - [ ] Etap 10: Testy i weryfikacja MVP
 
 ## Ostatni krok
-Ukończono Etap 8 — Inicjalizacja aplikacji webowej w Angular 19 (zastąpiono czysty TS) z wbudowanym builderem Vite i systemem styli Tailwind CSS 4.
-Następny: Etap 9 — Integracja Angular ↔ Spring Boot (zaczniemy od ekranów autoryzacji i komunikacji z bazą po JWT).
+
+W trakcie Etapu 9 — ukończono integrację autoryzacji (logowanie, rejestracja, JWT interceptor, CORS).
+Następny krok: widok Lobby (wybór poziomu trudności).
