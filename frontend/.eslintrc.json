@@ -1,0 +1,20 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": [
+      "./tsconfig.json",
+      "./src/tsconfig.app.json",
+      "./src/tsconfig.spec.json"
+    ]
+  },
+  "plugins": ["@typescript-eslint"],
+  "extends": ["eslint:recommended", "@typescript-eslint/recommended"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "no-console": "warn"
+  }
+}
