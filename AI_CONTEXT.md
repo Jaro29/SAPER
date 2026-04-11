@@ -74,21 +74,34 @@ com.jaro.saper
 
 frontend/src/app/
 ├── core/
-│   ├── interceptors/jwt.interceptor.ts
-│   ├── models/auth.model.ts, game.model.ts, score.model.ts
-│   └── services/auth.service.ts
+│   ├── interceptors/
+│   │   └── jwt.interceptor.ts              
+│   ├── models/
+│   │   ├── auth.model.ts                   
+│   │   ├── game.model.ts                   
+│   │   └── score.model.ts                  
+│   └── services/
+│       ├── auth.service.ts                 
+│       ├── game.service.ts                 
+│       └── score.service.ts                
 ├── features/
-│   ├── auth/auth.component.ts + .html   ← gotowe, działa
-│   ├── lobby/                            ← w trakcie
-│   ├── game/                             ← do zrobienia
-│   └── ranking/                          ← do zrobienia
-└── app.config.ts, app.routes.ts, app.component.ts
+│   ├── auth/
+│   │   ├── auth.component.ts               
+│   │   └── auth.component.html             
+│   ├── lobby/
+│   │   ├── lobby.component.ts              
+│   │   ├── lobby.component.html            
+│   │   └── lobby.component.css             
+│   ├── game/
+│   │   ├── game.component.ts               
+│   │   ├── game.component.html             
+│   │   └── game.component.css              
+│   └── ranking/
+│       ├── ranking.component.ts            
+│       ├── ranking.component.html          
+│       └── ranking.component.css           
+└── ...
 ```
-
-**Krok 1:**
-Skopiuj powyższą strukturę i zaktualizuj plik `AI_CONTEXT.md` w swoim IDE.
-
-Daj znać „OK”, gdy to zrobisz, a przejdziemy do inicjalizacji frontendu w Vue/React/czystym TS (zgodnie z instrukcją Vite).
 
 ## Baza danych
 
@@ -96,6 +109,12 @@ Daj znać „OK”, gdy to zrobisz, a przejdziemy do inicjalizacji frontendu w V
 - Migracje Liquibase (XML): 001-create-users, 002-create-games, 003-create-scores
 - Changelog master: `src/main/resources/db/changelog/db.changelog-master.xml`
 - `spring.jpa.hibernate.ddl-auto=validate` — schemat tylko przez Liquibase
+
+## Motyw wizualny
+- **Wszędzie koty** — projekt ma koci charakter wizualny
+- Miny = ukryte koty bawiące się w chowanego 🐱
+- Emoji, ikony, komunikaty — wszystko nawiązuje do kotów
+- Nazwa gry może ewoluować np. "Koci Saper" lub "CatSweeper"
 
 ## Ważne decyzje
 
