@@ -1,66 +1,98 @@
-# 💣 Saper Web MVP
 
-Webowa implementacja klasycznej gry Saper z logiką kontrolowaną po stronie serwera.
 
-## Stack
+# 🐱 Koci Saper (CatSweeper) – Web MVP
 
-| Warstwa     | Technologia                                       |
-| ----------- | ------------------------------------------------- |
-| Backend     | Java 21 + Spring Boot 3.5 + Spring Security + JWT |
-| Baza danych | MariaDB + Liquibase                               |
-| Frontend    | Angular 19 + TypeScript + Tailwind CSS 4          |
+Webowa wersja klasycznego Sapera z **kocim motywem**.  
+Logika gry działa w pełni po stronie serwera. Autoryzacja JWT, zapis wyników i globalny ranking.
 
-## Funkcjonalności
+## ✨ Funkcjonalności
 
-- Rejestracja i logowanie z autoryzacją JWT
+- Rejestracja i logowanie (JWT)
 - Trzy poziomy trudności: Łatwy (9×9), Średni (16×16), Trudny (30×16)
-- Bezpieczny pierwszy klik — plansza generowana po pierwszym kliknięciu
-- Lawinowe odkrywanie komórek (BFS)
-- Zapis wyników i ranking globalny
-- Pozycje min nigdy nie wychodzą do frontendu
+- Bezpieczny pierwszy klik – plansza generowana dopiero po pierwszym ruchu
+- Lawinowe odkrywanie pól (algorytm BFS)
+- Zapis czasu przy wygranej
+- Ranking globalny i historia własnych wyników
+- Pełny koci motyw wizualny 🐱
 
-## Uruchomienie
+## 🛠️ Stack
 
-### Backend
+| Warstwa     | Technologia                                      |
+|-------------|--------------------------------------------------|
+| Backend     | Java 21 + Spring Boot 3.5 + Spring Security + JWT |
+| Baza danych | MariaDB + Liquibase                              |
+| Frontend    | Angular 19 + TypeScript + Tailwind CSS 4         |
+
+## 🚀 Uruchomienie projektu
+
+### 1. Backend
 
 ```bash
-# Wymagania: Java 21, MariaDB
-# Skonfiguruj src/main/resources/application.properties (patrz niżej)
+# 1. Skonfiguruj application.properties (patrz niżej)
+# 2. Uruchom aplikację
 ./mvnw spring-boot:run
 ```
 
-### application.properties (lokalnie, nie w repo)
+**application.properties** (utwórz plik lokalnie – nie wrzucaj do repo!):
 
 ```properties
-spring.datasource.url=jdbc:mariadb://localhost:3306/saper
+spring.application.name=koci-saper
+
+# === MariaDB ===
+spring.datasource.url=jdbc:mariadb://localhost:3306/saper?useUnicode=true&characterEncoding=utf8mb4
 spring.datasource.username=root
 spring.datasource.password=TWOJE_HASLO
 spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+
+# === JPA + Liquibase ===
 spring.jpa.hibernate.ddl-auto=validate
 spring.liquibase.change-log=classpath:db/changelog/db.changelog-master.xml
-jwt.secret=TWOJ_SECRET
-jwt.expiration=86400000
+
+# === JWT ===
+jwt.secret=ZMIEŃ_NA_BARDZO_DŁUGIE_I_LOSOWE_HASŁO_2026!
+jwt.expiration=86400000   # 24 godziny
 ```
 
-### Frontend
+### 2. Frontend
 
 ```bash
 cd frontend
 npm install
 npm start
-# Aplikacja dostępna na http://localhost:4200
 ```
 
-## Struktura projektu
+Aplikacja będzie dostępna pod adresem: **http://localhost:4200**
 
-```text
+## 📁 Struktura projektu
+
+```
 saper/
-├── src/                    # Backend Java (Spring Boot)
-├── frontend/               # Frontend Angular 19
-├── Saper_PRD.md            # Specyfikacja projektu
-└── README.md
+├── src/                    # Backend Spring Boot
+├── frontend/               # Angular 19
+├── db/changelog/           # Migracje Liquibase
+├── Saper_PRD.md            # Pełna specyfikacja projektu
+├── PROGRESS.md             # Aktualny postęp prac
+├── README.md
+└── pom.xml
 ```
 
-## Autor
+## 🎮 Jak grać
 
-[Jaro29](https://github.com/Jaro29)
+1. Zarejestruj się lub zaloguj
+2. Wybierz poziom trudności
+3. Kliknij dowolne pole – pierwszy ruch jest zawsze bezpieczny
+4. Lewy klik = odkryj pole  
+   Prawy klik = postaw/zdejmij flagę
+5. Wygrywasz, gdy odkryjesz wszystkie pola bez ukrytych kotów
+
+## 🐱 Motyw gry
+
+Cała aplikacja utrzymana jest w zabawnym kocim stylu – ukryte miny to koty bawiące się w chowanego 🐱
+
+## 📋 Status projektu
+
+- ✅ Etapy 1–8 ukończone
+- 🔄 Etap 9: Integracja frontend ↔ backend (w trakcie)
+- ⬜ Etap 10: Testy i weryfikacja MVP
+
+---

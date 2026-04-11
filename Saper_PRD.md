@@ -65,9 +65,10 @@ System umożliwi użytkownikowi:
 ## 2. Użytkownicy i przypadki użycia
 
 ### 2.1 Profil użytkownika
-`[SZABLON — opisz docelowego użytkownika produktu]`
 
-Docelowy użytkownik to gracz chcący rozegrać klasyczną partię Sapera online, śledzić swoje czasy i rywalizować z innymi w rankingu. Nie są wymagane żadne specjalne umiejętności techniczne.
+Docelowy użytkownik to osoba lubiąca klasyczne gry logiczne, szczególnie Saper.  
+Chce szybko rozegrać jedną lub kilka partii „Kociego Sapera”, śledzić swoje czasy i rywalizować z innymi graczami w rankingu.  
+Nie wymaga zaawansowanej wiedzy technicznej – wystarczy przeglądarka.
 
 ### 2.2 Główny user flow
 ```
@@ -149,11 +150,11 @@ Docelowy użytkownik to gracz chcący rozegrać klasyczną partię Sapera online
 
 ### 4.1 Bezpieczeństwo
 
-- Hasła przechowywane wyłącznie jako hash BCrypt (min. cost factor 10).
-- Stan min **nigdy** nie jest wysyłany do frontendu podczas trwającej gry — backend zwraca tylko widok komórek dostępny dla gracza.
-- Logika wygranej, przegranej i walidacji ruchu realizowana **wyłącznie na backendzie**.
-- Token JWT: czas życia access tokenu — 24h. `[SZABLON — dostosuj do polityki bezpieczeństwa projektu]`
-- Wszystkie requesty przez HTTPS w środowisku produkcyjnym.
+- Hasła przechowywane wyłącznie jako hash BCrypt (cost factor 10).
+- Stan min nigdy nie jest wysyłany do frontendu podczas trwającej gry – backend zwraca tylko bezpieczny widok komórek.
+- Logika wygranej, przegranej i walidacji każdego ruchu realizowana wyłącznie na backendzie.
+- Token JWT ma czas życia 24 godziny.
+- Wszystkie endpointy poza `/api/auth/*` wymagają ważnego tokenu JWT.
 
 ### 4.2 Wydajność
 
@@ -192,13 +193,13 @@ Docelowy użytkownik to gracz chcący rozegrać klasyczną partię Sapera online
 
 ### 5.2 Stack technologiczny
 
-| Warstwa | Technologia                              | Uzasadnienie |
-|---|------------------------------------------|---|
-| Backend | Java 21 + Spring Boot 3.x                | `[SZABLON]` |
-| Bezpieczeństwo | Spring Security + JWT + BCrypt           | `[SZABLON]` |
-| Frontend | Angular 19 + TypeScript + Tailwind CSS 4 | Kompletny framework z wbudowanym routingiem i klientem HTTP, szybki build (Vite) |
-| Baza danych | MariaDB | `[SZABLON]` |
-| Repozytorium | GitHub | `[SZABLON]` |
+| Warstwa       | Technologia                                      | Uzasadnienie                          |
+|---------------|--------------------------------------------------|---------------------------------------|
+| Backend       | Java 21 + Spring Boot 3.5                        | Dojrzały, stabilny framework          |
+| Bezpieczeństwo| Spring Security + JWT + BCrypt                   | Standard w aplikacjach Spring Boot    |
+| Frontend      | Angular 19 + TypeScript + Tailwind CSS 4         | Kompletny framework + nowoczesny styling |
+| Baza danych   | MariaDB + Liquibase                              | Niezawodna relacyjna baza + migracje  |
+| Repozytorium  | GitHub                                           | Publiczne repozytorium projektu       |
 
 ---
 
@@ -516,13 +517,13 @@ MVP jest ukończone, gdy spełnione są **wszystkie** poniższe kryteria:
 
 ---
 
-## 11. Otwarte decyzje — po MVP
-`[SZABLON — wypełnij przed kolejną iteracją]`
+### 11. Otwarte decyzje — po MVP
 
-| Temat | Opcje do rozważenia |
-|---|---|
-| Swobodny wybór parametrów planszy | Własne `rows / cols / mines` poza presetami |
-| Wznawianie gry | `GET /api/games/{id}` przywraca stan po odświeżeniu |
-| Obsługa dotykowa | Long-press jako prawy klik (flaga) na mobile |
-| Rozbudowany UI | Animacje odkrywania, efekt eksplozji przy przegranej |
-| Refresh token | Rotacja tokenów zamiast długiego access tokenu |
+| Temat                        | Opcje do rozważenia                                      |
+|-----------------------------|----------------------------------------------------------|
+| Swobodny wybór planszy      | Własne rows / cols / mines poza presetami                |
+| Wznawianie przerwanej gry   | Przywracanie sesji po odświeżeniu strony                 |
+| Obsługa urządzeń mobilnych  | Long-press jako flaga, lepsze responsywne UI             |
+| Rozbudowany UI              | Animacje odkrywania komórek, efekt „koci wybuch” przy przegranej |
+| Refresh token               | Wprowadzenie rotacji tokenów zamiast jednego długiego    |
+| Motyw graficzny             | Więcej grafik z kotami (ikony, emotki, tło)             |
