@@ -19,5 +19,5 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + Angular 19 + TypeS
 
 ## Ostatni krok
 
-W trakcie Etapu 9 — ukończono integrację autoryzacji (logowanie, rejestracja, JWT interceptor, CORS).
-Następny krok: widok Lobby (wybór poziomu trudności).
+W trakcie Etapu 9 — ukończono auth + Lobby. Następny krok: widok planszy gry (Game component).
+Motyw: koty wszędzie 🐱 — miny to ukryte koty bawiące się w chowanego.
