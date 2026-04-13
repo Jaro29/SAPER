@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { GameService } from '../../core/services/game.service';
@@ -8,8 +9,8 @@ import { Difficulty } from '../../core/models/game.model';
 @Component({
   selector: 'app-lobby',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './lobby.component.html'
+  imports: [CommonModule, RouterModule],
+  templateUrl: './lobby.component.html',
 })
 export class LobbyComponent {
   loading = false;
@@ -18,13 +19,13 @@ export class LobbyComponent {
   levels: { difficulty: Difficulty; label: string; desc: string; color: string }[] = [
     { difficulty: 'EASY', label: 'Łatwy', desc: '9×9 / 10 pudełek', color: 'emerald' },
     { difficulty: 'MEDIUM', label: 'Średni', desc: '16×16 / 40 pudełek', color: 'yellow' },
-    { difficulty: 'HARD', label: 'Trudny', desc: '30×16 / 99 pudełek', color: 'red' }
+    { difficulty: 'HARD', label: 'Trudny', desc: '30×16 / 99 pudełek', color: 'red' },
   ];
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    private gameService: GameService
+    private gameService: GameService,
   ) {}
 
   startGame(difficulty: Difficulty): void {
@@ -36,7 +37,7 @@ export class LobbyComponent {
       error: () => {
         this.errorMessage = 'Nie udało się utworzyć gry. Spróbuj ponownie.';
         this.loading = false;
-      }
+      },
     });
   }
 

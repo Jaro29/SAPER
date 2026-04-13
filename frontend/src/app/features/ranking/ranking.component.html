@@ -1,0 +1,121 @@
+<div class="min-h-screen bg-gray-100 flex flex-col items-center py-10 font-sans">
+    <div class="bg-white p-8 rounded-xl shadow-lg max-w-4xl w-full">
+      
+      <!-- Nagłówek -->
+      <div class="flex justify-between items-center mb-6 border-b pb-4">
+        <h1 class="text-3xl font-extrabold text-gray-800">🏆 Ranking i Historia</h1>
+        <a routerLink="/lobby" class="text-blue-600 hover:text-blue-800 font-semibold transition-colors">
+          ⬅ Wróć do Lobby
+        </a>
+      </div>
+  
+      <!-- Przełączniki zakładek -->
+      <div class="flex space-x-4 mb-6">
+        <button 
+          (click)="switchTab('global')"
+          [ngClass]="activeTab === 'global' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
+          class="px-6 py-2 rounded-lg font-semibold transition-colors focus:outline-none">
+          🌍 Ranking Globalny
+        </button>
+        <button 
+          (click)="switchTab('personal')"
+          [ngClass]="activeTab === 'personal' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'"
+          class="px-6 py-2 rounded-lg font-semibold transition-colors focus:outline-none">
+          👤 Moje Wyniki
+        </button>
+      </div>
+  
+      <!-- Komunikat o błędzie -->
+      <div *ngIf="errorMessage" class="mb-4 p-4 text-red-700 bg-red-100 rounded-lg shadow">
+        {{ errorMessage }}
+      </div>
+  
+      <!-- Zawartość: Ranking Globalny -->
+      <div *ngIf="activeTab === 'global'">
+        <div class="flex space-x-2 mb-4 justify-center">
+          <button (click)="setDifficulty('EASY')"
+            [ngClass]="selectedDifficulty === 'EASY' ? 'bg-emerald-500 text-white' : 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200'"
+            class="px-4 py-1 rounded shadow-sm text-sm font-bold transition-colors">Łatwy</button>
+          <button (click)="setDifficulty('MEDIUM')"
+            [ngClass]="selectedDifficulty === 'MEDIUM' ? 'bg-yellow-500 text-white' : 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200'"
+            class="px-4 py-1 rounded shadow-sm text-sm font-bold transition-colors">Średni</button>
+          <button (click)="setDifficulty('HARD')"
+            [ngClass]="selectedDifficulty === 'HARD' ? 'bg-red-500 text-white' : 'bg-red-100 text-red-800 hover:bg-red-200'"
+            class="px-4 py-1 rounded shadow-sm text-sm font-bold transition-colors">Trudny</button>
+        </div>
+  
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-gray-50 border-b-2 border-gray-200 text-gray-600 uppercase text-sm tracking-wider">
+                <th class="p-3">Pozycja</th>
+                <th class="p-3">Gracz</th>
+                <th class="p-3 text-right">Czas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="loading">
+                <td colspan="3" class="p-4 text-center text-gray-500 font-medium">Ładowanie wyników...</td>
+              </tr>
+              <tr *ngIf="!loading && globalScores.length === 0">
+                <td colspan="3" class="p-4 text-center text-gray-500 font-medium">Brak wyników w tym rankingu. Bądź pierwszy! 🚀</td>
+              </tr>
+              <tr *ngFor="let score of globalScores" class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                <td class="p-3 font-bold text-gray-800">
+                  <span *ngIf="score.rank === 1" class="text-yellow-500 text-xl">🥇</span>
+                  <span *ngIf="score.rank === 2" class="text-gray-400 text-xl">🥈</span>
+                  <span *ngIf="score.rank === 3" class="text-amber-600 text-xl">🥉</span>
+                  <span *ngIf="score.rank > 3" class="ml-2">{{ score.rank }}</span>
+                </td>
+                <td class="p-3 font-medium text-gray-700">{{ score.login }}</td>
+                <td class="p-3 text-right font-mono font-bold text-blue-600">{{ formatTime(score.timeSeconds) }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  
+      <!-- Zawartość: Moje Wyniki -->
+      <div *ngIf="activeTab === 'personal'">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-gray-50 border-b-2 border-gray-200 text-gray-600 uppercase text-sm tracking-wider">
+                <th class="p-3">Data</th>
+                <th class="p-3">Poziom</th>
+                <th class="p-3">Status</th>
+                <th class="p-3 text-right">Czas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="loading">
+                <td colspan="4" class="p-4 text-center text-gray-500 font-medium">Ładowanie Twojej historii...</td>
+              </tr>
+              <tr *ngIf="!loading && personalScores.length === 0">
+                <td colspan="4" class="p-4 text-center text-gray-500 font-medium">Nie masz jeszcze żadnych zapisanych gier. 🎮</td>
+              </tr>
+              <tr *ngFor="let score of personalScores" class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                <td class="p-3 text-gray-600">{{ score.playedAt | date:'short' }}</td>
+                <td class="p-3 font-bold"
+                  [ngClass]="{
+                    'text-emerald-600': score.difficulty === 'EASY',
+                    'text-yellow-600': score.difficulty === 'MEDIUM',
+                    'text-red-600': score.difficulty === 'HARD'
+                  }">
+                  {{ score.difficulty }}
+                </td>
+                <td class="p-3 font-bold"
+                  [ngClass]="score.status === 'WON' ? 'text-green-600' : (score.status === 'LOST' ? 'text-red-600' : 'text-gray-500')">
+                  {{ score.status === 'WON' ? 'Wygrana 🎉' : (score.status === 'LOST' ? 'Przegrana 🙀' : 'Anulowana') }}
+                </td>
+                <td class="p-3 text-right font-mono font-bold text-gray-800">
+                  {{ score.timeSeconds ? formatTime(score.timeSeconds) : '-' }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  
+    </div>
+  </div>

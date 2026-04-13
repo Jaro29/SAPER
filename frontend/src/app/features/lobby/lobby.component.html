@@ -37,18 +37,18 @@
         </button>
       </div>
   
-      <!-- Dolny pasek (Przyciski akcji) -->
-      <div class="flex justify-between items-center border-t pt-6">
-        <a routerLink="/ranking" class="text-blue-600 hover:text-blue-800 font-semibold transition-colors">
-          🏆 Zobacz Ranking
-        </a>
-        
-        <button 
-          (click)="logout()" 
-          class="text-gray-500 hover:text-red-600 font-semibold transition-colors flex items-center gap-1">
-          🚪 Wyloguj
-        </button>
-      </div>
+    <!-- Dolny pasek (Przyciski akcji) -->
+    <div class="flex justify-between items-center border-t pt-6 relative z-10">
+      <a routerLink="/ranking" class="cursor-pointer text-blue-600 hover:text-blue-800 font-semibold transition-colors flex items-center gap-1 focus:outline-none">
+        🏆 Zobacz Ranking
+      </a>
+      
+      <button 
+        (click)="logout()" 
+        class="cursor-pointer text-gray-500 hover:text-red-600 font-semibold transition-colors flex items-center gap-1 focus:outline-none">
+        🚪 Wyloguj
+      </button>
+    </div>
   
     </div>
   </div>

@@ -1,21 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { AuthRequest, AuthResponse } from '../models/auth.model';
+import { API_URL } from '../../app.config';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly API = 'http://localhost:8080/api/auth';
-
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    @Inject(API_URL) private apiUrl: string,
+  ) {}
 
   register(request: AuthRequest): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.API}/register`, request);
+    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/register`, request);
   }
 
   login(request: AuthRequest): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(`${this.API}/login`, request)
+      .post<AuthResponse>(`${this.apiUrl}/auth/login`, request)
       .pipe(tap((response) => this.saveToken(response.token)));
   }
 

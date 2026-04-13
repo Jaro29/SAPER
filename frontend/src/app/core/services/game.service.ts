@@ -1,31 +1,29 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GameResponse, MoveRequest, Difficulty } from '../models/game.model';
+import { API_URL } from '../../app.config';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class GameService {
-  private readonly API = 'http://localhost:8080/api/games';
-
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    @Inject(API_URL) private apiUrl: string,
+  ) {}
 
   createGame(difficulty: Difficulty): Observable<GameResponse> {
-    return this.http.post<GameResponse>(this.API, { difficulty });
+    return this.http.post<GameResponse>(`${this.apiUrl}/games`, { difficulty });
   }
 
   getGame(gameId: number): Observable<GameResponse> {
-    return this.http.get<GameResponse>(`${this.API}/${gameId}`);
+    return this.http.get<GameResponse>(`${this.apiUrl}/games/${gameId}`);
   }
 
   revealCell(gameId: number, row: number, col: number): Observable<GameResponse> {
-    const request: MoveRequest = { row, col };
-    return this.http.post<GameResponse>(`${this.API}/${gameId}/reveal`, request);
+    return this.http.post<GameResponse>(`${this.apiUrl}/games/${gameId}/reveal`, { row, col });
   }
 
   flagCell(gameId: number, row: number, col: number): Observable<GameResponse> {
-    const request: MoveRequest = { row, col };
-    return this.http.post<GameResponse>(`${this.API}/${gameId}/flag`, request);
+    return this.http.post<GameResponse>(`${this.apiUrl}/games/${gameId}/flag`, { row, col });
   }
 }
