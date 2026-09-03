@@ -1,9 +1,5 @@
 # Saper Web MVP — Progress
 
-## Stack
-
-Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + Angular 19 + TypeScript + Tailwind CSS 4
-
 ## Etapy
 
 - ✅ Etap 1: Inicjalizacja projektu Spring Boot
@@ -22,7 +18,3 @@ Java 21 + Spring Boot 3.5 + Spring Security + JWT + MariaDB + Angular 19 + TypeS
 **Etap 9 zakończony** — merge do develop.  
 Zrealizowane: integracja auth (logowanie, rejestracja, JWT interceptor, CORS), widok Lobby, widok gry z motywem kotów, zapisywanie wyników po wygranej, widok Rankingu z zakładkami global/personal (punkt 9.4 z PRD), naprawa routingu.  
 Następny: **Etap 10** — testy i weryfikacja MVP (kryteria ukończenia z PRD §10).
-
-## Motyw wizualny
-
-Cała gra ma koci charakter – miny to ukryte koty 🐱
