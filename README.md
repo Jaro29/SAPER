@@ -1,5 +1,3 @@
-
-
 # 🐱 Koci Saper (CatSweeper) – Web MVP
 
 Webowa wersja klasycznego Sapera z **kocim motywem**.  
@@ -17,11 +15,11 @@ Logika gry działa w pełni po stronie serwera. Autoryzacja JWT, zapis wyników 
 
 ## 🛠️ Stack
 
-| Warstwa     | Technologia                                      |
-|-------------|--------------------------------------------------|
+| Warstwa     | Technologia                                       |
+| ----------- | ------------------------------------------------- |
 | Backend     | Java 21 + Spring Boot 3.5 + Spring Security + JWT |
-| Baza danych | MariaDB + Liquibase                              |
-| Frontend    | Angular 19 + TypeScript + Tailwind CSS 4         |
+| Baza danych | MariaDB + Liquibase                               |
+| Frontend    | Angular 19 + TypeScript + Tailwind CSS 4          |
 
 ## 🚀 Uruchomienie projektu
 
@@ -71,6 +69,7 @@ saper/
 ├── frontend/               # Angular 19
 ├── db/changelog/           # Migracje Liquibase
 ├── Saper_PRD.md            # Pełna specyfikacja projektu
+├── AI_CONTEXT.md           # Kontekst i zasady pracy z AI
 ├── PROGRESS.md             # Aktualny postęp prac
 ├── README.md
 └── pom.xml
@@ -91,8 +90,6 @@ Cała aplikacja utrzymana jest w zabawnym kocim stylu – ukryte miny to koty ba
 
 ## 📋 Status projektu
 
-- ✅ Etapy 1–8 ukończone
-- 🔄 Etap 9: Integracja frontend ↔ backend (w trakcie)
-- ⬜ Etap 10: Testy i weryfikacja MVP
+Aktualny status prac: zobacz [`PROGRESS.md`](PROGRESS.md).
 
 ---

@@ -25,12 +25,6 @@ main → develop → feature/etap-XX-nazwa
 - Frontend: Angular 19 + TypeScript + Tailwind CSS 4
 - IDE: IntelliJ IDEA
 
-## Aktualny etap
-
-Etap 10: Testy i weryfikacja MVP  
-(Etap 9 ukończony: auth, lobby, widok gry, zapisywanie wyników, Ranking + Historia.  
-Następny krok: testy i weryfikacja kryteriów ukończenia MVP — PRD §10)
-
 ## Ważne decyzje
 
 - `application.properties` NIE jest w repozytorium
@@ -41,7 +35,8 @@ Następny krok: testy i weryfikacja kryteriów ukończenia MVP — PRD §10)
 
 ## Instrukcja dla AI (początek sesji)
 
-1. Przeczytaj `PROGRESS.md` — sprawdź aktualny etap
-2. Pracuj krok po kroku – jedna czynność naraz
-3. Jeśli potrzebujesz kodu – pytaj „wklej mi plik X”
-4. Po ukończeniu etapu: commit → merge do develop → aktualizuj PROGRESS.md i AI_CONTEXT.md → push
+1. Przeczytaj `PROGRESS.md` — sprawdź aktualny etap i podsumuj gdzie jesteśmy
+2. Pracuj krok po kroku, czekaj na „OK” — jedna czynność naraz
+3. Jeśli potrzebujesz kodu — pytaj „wklej mi plik X”
+4. Po ukończeniu etapu: commit → merge do develop → aktualizuj `PROGRESS.md` → push  
+   (`AI_CONTEXT.md` aktualizuj tylko przy zmianie decyzji architektonicznych)
