@@ -1,0 +1,54 @@
+<div class="min-h-screen bg-gray-100 flex flex-col items-center justify-center py-10">
+    <div class="bg-white p-8 rounded-xl shadow-lg max-w-2xl w-full text-center">
+      
+      <!-- Nagłówek -->
+      <h1 class="text-4xl font-extrabold text-gray-800 mb-2">Wybierz Poziom</h1>
+      <p class="text-gray-500 mb-8">Gotowy na szukanie kotów? 🐱📦 Wybierz trudność planszy.</p>
+  
+      <!-- Komunikat o błędzie -->
+      <div *ngIf="errorMessage" class="mb-4 p-4 text-red-700 bg-red-100 rounded-lg shadow">
+        {{ errorMessage }}
+      </div>
+  
+      <!-- Lista poziomów -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <button 
+          *ngFor="let level of levels" 
+          (click)="startGame(level.difficulty)"
+          [disabled]="loading"
+          class="group relative flex flex-col items-center justify-center p-6 border-2 border-transparent rounded-2xl shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4"
+          [ngClass]="{
+            'bg-emerald-50 hover:border-emerald-500 focus:ring-emerald-200': level.color === 'emerald',
+            'bg-yellow-50 hover:border-yellow-500 focus:ring-yellow-200': level.color === 'yellow',
+            'bg-red-50 hover:border-red-500 focus:ring-red-200': level.color === 'red',
+            'opacity-50 cursor-not-allowed': loading
+          }">
+          
+          <span class="text-2xl font-bold text-gray-800 mb-2"
+            [ngClass]="{
+              'text-emerald-700': level.color === 'emerald',
+              'text-yellow-700': level.color === 'yellow',
+              'text-red-700': level.color === 'red'
+            }">
+            {{ level.label }}
+          </span>
+          
+          <span class="text-sm font-medium text-gray-500">{{ level.desc }}</span>
+        </button>
+      </div>
+  
+    <!-- Dolny pasek (Przyciski akcji) -->
+    <div class="flex justify-between items-center border-t pt-6 relative z-10">
+      <a routerLink="/ranking" class="cursor-pointer text-blue-600 hover:text-blue-800 font-semibold transition-colors flex items-center gap-1 focus:outline-none">
+        🏆 Zobacz Ranking
+      </a>
+      
+      <button 
+        (click)="logout()" 
+        class="cursor-pointer text-gray-500 hover:text-red-600 font-semibold transition-colors flex items-center gap-1 focus:outline-none">
+        🚪 Wyloguj
+      </button>
+    </div>
+  
+    </div>
+  </div>

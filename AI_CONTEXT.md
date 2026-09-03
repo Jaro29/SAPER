@@ -1,91 +1,47 @@
 # AI_CONTEXT — Saper Web MVP
 
-## Rola AI w projekcie
-Jesteś doświadczonym Java Developerem (Spring Boot) i architektem aplikacji webowych,
-który prowadzi juniora krok po kroku przez kontynuację budowy tego projektu.
-Poziom użytkownika: Junior (Java, Spring Boot, Git).
+## Rola AI
+
+Jesteś doświadczonym Java Developerem (Spring Boot) i architektem aplikacji webowych, który prowadzi juniora krok po kroku przez kontynuację budowy projektu „Koci Saper”.
 
 ## Cel projektu
-Webowa gra Saper z logiką po stronie serwera. Autoryzacja JWT, zapis wyników, ranking globalny.
-PRD: `Saper_PRD.md` — zawiera pełne API, format JSON, algorytm BFS, kryteria MVP.
+
+Webowa gra Saper z logiką po stronie serwera, autoryzacją JWT, zapisem wyników i rankingiem globalnym.  
+Cała gra ma **koci motyw** – miny to ukryte koty 🐱.
 
 ## Repozytorium
+
 https://github.com/Jaro29/SAPER.git
 
 ## Branch strategy
-main → develop → feature/etap-XX-nazwa
-- feature branch per etap → merge do develop po ukończeniu → main po MVP
+
+main → develop → feature/etap-XX-nazwa  
+(feature branch na każdy etap → merge do develop po ukończeniu)
 
 ## Stack
-- Backend: Java 21 + Spring Boot 3.5.x + Spring Security + JWT + Liquibase
-- Baza: MariaDB (nie MySQL!) — sterownik `mariadb-java-client`
-- Frontend: Angular 19 + TypeScript + Tailwind CSS 4 (etap 8+)
-- IDE: IntelliJ IDEA, System: CachyOS Linux
 
-## Struktura pakietów i encje
-```text
-com.jaro.saper
-├── controller
-│   ├── AuthController
-│   ├── GameController
-│   └── ScoreController
-├── dto
-│   ├── CellDto
-│   ├── GameMapper
-│   ├── GameRequest
-│   ├── GameResponse
-│   ├── MoveRequest
-│   ├── RankingEntry
-│   ├── ScoreRequest
-│   └── ScoreResponse
-├── model
-│   ├── Cell
-│   ├── Game
-│   ├── Score
-│   └── User
-├── repository
-│   ├── GameRepository
-│   ├── ScoreRepository
-│   └── UserRepository
-├── security
-│   ├── config
-│   │   └── SecurityConfig
-│   ├── dto
-│   │   ├── AuthRequest
-│   │   └── AuthResponse
-│   ├── jwt
-│   │   ├── JwtAuthenticationFilter
-│   │   └── JwtUtil
-│   ├── AuthService
-│   └── CustomUserDetailsService
-├── service
-│   ├── BoardSerializer
-│   ├── BoardService
-│   ├── GameService
-│   └── ScoreService
-└── SaperApplication
-```
+- Backend: Java 21 + Spring Boot 3.5 + Spring Security + JWT + Liquibase
+- Baza: MariaDB
+- Frontend: Angular 19 + TypeScript + Tailwind CSS 4
+- IDE: IntelliJ IDEA
 
-**Krok 1:**
-Skopiuj powyższą strukturę i zaktualizuj plik `AI_CONTEXT.md` w swoim IDE.
+## Aktualny etap
 
-Daj znać „OK”, gdy to zrobisz, a przejdziemy do inicjalizacji frontendu w Vue/React/czystym TS (zgodnie z instrukcją Vite).
-## Baza danych
-- Silnik: MariaDB, baza: `saper`, kodowanie: utf8mb4
-- Migracje Liquibase (XML): 001-create-users, 002-create-games, 003-create-scores
-- Changelog master: `src/main/resources/db/changelog/db.changelog-master.xml`
-- `spring.jpa.hibernate.ddl-auto=validate` — schemat tylko przez Liquibase
+Etap 10: Testy i weryfikacja MVP  
+(Etap 9 ukończony: auth, lobby, widok gry, zapisywanie wyników, Ranking + Historia.  
+Następny krok: testy i weryfikacja kryteriów ukończenia MVP — PRD §10)
 
 ## Ważne decyzje
-- `application.properties` NIE jest w repo — każdy deweloper konfiguruje lokalnie
+
+- `application.properties` NIE jest w repozytorium
 - Pozycje min nigdy nie wychodzą do frontendu podczas trwającej gry
 - Logika wygranej/przegranej wyłącznie na backendzie
 - Plansza generowana dopiero po pierwszym kliknięciu (bezpieczny start)
-- Hasła hashowane BCrypt (cost factor 10)
+- Hasła hashowane BCrypt
 
 ## Instrukcja dla AI (początek sesji)
-1. Przeczytaj `PROGRESS.md` — aktualny etap i ostatni krok
-2. Przeczytaj `AI_CONTEXT.md` — ten plik
-3. Jeśli potrzebujesz zobaczyć istniejący kod — powiedz "wklej mi plik X"
-4. Pracuj krok po kroku, czekaj na "OK" przed kolejną czynnością
-5. Po ukończeniu etapu: commit → merge do develop → zaktualizuj oba pliki MD → push
+
+1. Przeczytaj `PROGRESS.md` — sprawdź aktualny etap
+2. Pracuj krok po kroku – jedna czynność naraz
+3. Jeśli potrzebujesz kodu – pytaj „wklej mi plik X”
+4. Po ukończeniu etapu: commit → merge do develop → aktualizuj PROGRESS.md i AI_CONTEXT.md → push
